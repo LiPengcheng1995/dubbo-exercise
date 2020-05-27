@@ -28,6 +28,39 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--内部依赖-->
+            <dependency>
+                <groupId>com.lpc.learn.dubbo</groupId>
+                <artifactId>api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.dubbo</groupId>
+                <artifactId>common-consumer</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.dubbo</groupId>
+                <artifactId>common-provider</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.dubbo</groupId>
+                <artifactId>impl</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.dubbo</groupId>
+                <artifactId>spring-consumer</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.dubbo</groupId>
+                <artifactId>spring-provider</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+
             <!-- rpc 依赖-->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -64,6 +97,13 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
