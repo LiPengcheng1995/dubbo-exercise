@@ -13,4 +13,9 @@ import lombok.Data;
 public class Request<T> {
     private T data;
 
+    public static <T> Request<T> build(T data){
+        Request<T> request = new Request<>();
+        request.setData(data);
+        return request;
+    }
 }
