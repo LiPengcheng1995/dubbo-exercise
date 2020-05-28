@@ -29,7 +29,7 @@ public class CommonProviderMain {
 
         ProtocolConfig protocolConfig = new ProtocolConfig();
         protocolConfig.setName("dubbo");
-        protocolConfig.setPort(20880);
+        protocolConfig.setPort(20882);
 
         ServiceConfig<UserSoa> serviceConfig = new ServiceConfig<>();
         serviceConfig.setApplication(applicationConfig);
