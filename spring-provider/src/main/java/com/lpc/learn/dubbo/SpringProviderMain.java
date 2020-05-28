@@ -3,7 +3,6 @@ package com.lpc.learn.dubbo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -19,15 +18,13 @@ import org.springframework.context.annotation.ImportResource;
 @Slf4j
 @SpringBootApplication
 @ImportResource(locations = {"classpath:dubbo/dubbo.xml"})
-public class Main {
+public class SpringProviderMain {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
-        while (true) {
-            try {
-                Thread.currentThread().wait();
-            } catch (Throwable e) {
-                log.error("阻塞被打断,",e);
-            }
+        SpringApplication.run(SpringProviderMain.class, args);
+        try {
+            System.in.read();
+        } catch (Throwable e) {
+            log.error("收到退出消息,",e);
         }
     }
 }

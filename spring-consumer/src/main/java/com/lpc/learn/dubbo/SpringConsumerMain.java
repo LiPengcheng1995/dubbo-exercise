@@ -15,8 +15,8 @@ import org.springframework.context.annotation.ImportResource;
 @Slf4j
 @SpringBootApplication
 @ImportResource(locations = {"classpath:dubbo/dubbo.xml"})
-public class Main {
+public class SpringConsumerMain {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(SpringConsumerMain.class, args);
     }
 }
