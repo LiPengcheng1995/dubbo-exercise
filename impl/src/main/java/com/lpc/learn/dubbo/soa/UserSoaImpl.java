@@ -16,8 +16,12 @@ import javax.annotation.Resource;
  */
 @Service
 public class UserSoaImpl implements UserSoa {
-    @Resource
+
     private UserService userService;
+
+    public UserSoaImpl(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public Response<String> deal(Request<String> request) {

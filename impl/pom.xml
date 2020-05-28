@@ -11,5 +11,12 @@
 
     <artifactId>impl</artifactId>
 
+    <dependencies>
+        <!--通用实现-->
+        <dependency>
+            <groupId>com.lpc.learn.dubbo</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
