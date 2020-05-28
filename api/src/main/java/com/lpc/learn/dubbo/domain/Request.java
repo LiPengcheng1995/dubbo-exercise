@@ -2,6 +2,8 @@ package com.lpc.learn.dubbo.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author: 李鹏程
  * @email: lipengcheng3@jd.com
@@ -10,10 +12,10 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class Request<T> {
+public class Request<T> implements Serializable {
     private T data;
 
-    public static <T> Request<T> build(T data){
+    public static <T> Request<T> build(T data) {
         Request<T> request = new Request<>();
         request.setData(data);
         return request;

@@ -2,6 +2,8 @@ package com.lpc.learn.dubbo.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author: 李鹏程
  * @email: lipengcheng3@jd.com
@@ -10,11 +12,11 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class Response<T> {
+public class Response<T> implements Serializable {
     private T data;
     private Integer code;
 
-    public static <T> Response<T> buildSuccess(T data){
+    public static <T> Response<T> buildSuccess(T data) {
         Response<T> response = new Response<>();
         response.setCode(200);
         response.setData(data);
