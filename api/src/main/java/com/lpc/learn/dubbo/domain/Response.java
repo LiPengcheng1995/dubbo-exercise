@@ -3,6 +3,7 @@ package com.lpc.learn.dubbo.domain;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author: 李鹏程
@@ -15,6 +16,8 @@ import java.io.Serializable;
 public class Response<T> implements Serializable {
     private T data;
     private Integer code;
+
+    private List<Response<T>> mergedResponseList;
 
     public static <T> Response<T> buildSuccess(T data) {
         Response<T> response = new Response<>();

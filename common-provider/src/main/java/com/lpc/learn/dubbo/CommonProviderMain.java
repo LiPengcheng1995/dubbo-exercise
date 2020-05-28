@@ -37,6 +37,7 @@ public class CommonProviderMain {
         serviceConfig.setProtocol(protocolConfig);
         serviceConfig.setInterface(UserSoa.class);
         serviceConfig.setRef(new UserSoaImpl(new UserServiceImpl()));
+        serviceConfig.setGroup("common-group");
 
         serviceConfig.export();
 
