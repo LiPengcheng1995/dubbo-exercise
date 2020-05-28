@@ -12,7 +12,7 @@
     <artifactId>spring-consumer</artifactId>
 
     <dependencies>
-        <!--接口-->
+        <!--通用实现-->
         <dependency>
             <groupId>com.lpc.learn.dubbo</groupId>
             <artifactId>api</artifactId>

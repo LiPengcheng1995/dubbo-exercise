@@ -2,7 +2,6 @@ package com.lpc.learn.dubbo.service.impl;
 
 import com.lpc.learn.dubbo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 /**
  * @author: 李鹏程
@@ -12,10 +11,9 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Slf4j
-@Service
 public class UserServiceImpl implements UserService {
     @Override
     public String deal(String input) {
-        return "收到入参:"+input;
+        return "收到入参:" + input;
     }
 }
