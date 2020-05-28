@@ -4,6 +4,7 @@
        xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="spring-provider" />
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
     <import resource="dubbo-provider.xml"/>
 </beans>

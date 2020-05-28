@@ -25,7 +25,7 @@ public class Main {
         while (true) {
             try {
                 Thread.currentThread().wait();
-            } catch (InterruptedException e) {
+            } catch (Throwable e) {
                 log.error("阻塞被打断,",e);
             }
         }
