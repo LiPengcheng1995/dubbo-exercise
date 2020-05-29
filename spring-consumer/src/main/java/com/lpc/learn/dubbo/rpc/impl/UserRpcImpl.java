@@ -24,15 +24,20 @@ import java.util.stream.Collectors;
 public class UserRpcImpl implements UserRpc {
     @Resource
     private UserSoa userSoa;
+
+    @Resource
+    private UserSoa userSoaBatch;
+
     @Override
     public String deal(String input) {
-        Response<String> response = userSoa.deal(Request.build(input));
-
-        if (!CollectionUtils.isEmpty(response.getMergedResponseList())){
-            return JSON.toJSONString(response.getMergedResponseList().stream()
-                    .map(res->res.getData())
-                    .collect(Collectors.toList()));
-        }
         return userSoa.deal(Request.build(input)).getData();
+    }
+
+    @Override
+    public String dealBatch(String input) {
+        Response<String> response = userSoaBatch.deal(Request.build(input));
+        return JSON.toJSONString(response.getMergedResponseList().stream()
+                .map(res->res.getData())
+                .collect(Collectors.toList()));
     }
 }
