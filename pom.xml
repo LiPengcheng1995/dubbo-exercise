@@ -15,6 +15,8 @@
         <module>spring-consumer</module>
         <module>api</module>
         <module>impl</module>
+        <module>common-generic-consumer</module>
+        <module>spring-generic-consumer</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
