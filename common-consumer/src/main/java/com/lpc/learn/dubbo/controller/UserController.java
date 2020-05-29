@@ -25,4 +25,9 @@ public class UserController {
     public String deal(String input) {
         return userRpc.deal(input);
     }
+
+    @GetMapping(path = "/dealBatch")
+    public String dealBatch(String input) {
+        return userRpc.dealBatch(input);
+    }
 }

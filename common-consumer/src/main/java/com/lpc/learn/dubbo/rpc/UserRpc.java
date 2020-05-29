@@ -9,4 +9,6 @@ package com.lpc.learn.dubbo.rpc;
  */
 public interface UserRpc {
     String deal(String input);
+    String dealBatch(String input);
+
 }

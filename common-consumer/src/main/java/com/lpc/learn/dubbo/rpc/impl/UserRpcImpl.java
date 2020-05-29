@@ -1,6 +1,8 @@
 package com.lpc.learn.dubbo.rpc.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.lpc.learn.dubbo.domain.Request;
+import com.lpc.learn.dubbo.domain.Response;
 import com.lpc.learn.dubbo.rpc.UserRpc;
 import com.lpc.learn.dubbo.soa.UserSoa;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +12,7 @@ import org.apache.dubbo.config.RegistryConfig;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.util.stream.Collectors;
 
 /**
  * @author: 李鹏程
@@ -22,11 +24,21 @@ import javax.annotation.Resource;
 @Slf4j
 @Service
 public class UserRpcImpl implements UserRpc, InitializingBean {
-    private UserSoa userSoa;
+    private UserSoa singleUserSoa;
+
+    private UserSoa batchUserSoa;
 
     @Override
     public String deal(String input) {
-        return userSoa.deal(Request.build(input)).getData();
+        return singleUserSoa.deal(Request.build(input)).getData();
+    }
+
+    @Override
+    public String dealBatch(String input) {
+        Response<String> response = batchUserSoa.deal(Request.build(input));
+        return JSON.toJSONString(response.getMergedResponseList().stream()
+                .map(res->res.getData())
+                .collect(Collectors.toList()));
     }
 
     @Override
@@ -38,11 +50,22 @@ public class UserRpcImpl implements UserRpc, InitializingBean {
         registryConfig.setAddress("127.0.0.1:2181");
         registryConfig.setProtocol("zookeeper");
 
-        ReferenceConfig<UserSoa> referenceConfig = new ReferenceConfig<>();
-        referenceConfig.setApplication(applicationConfig);
-        referenceConfig.setRegistry(registryConfig);
-        referenceConfig.setInterface(UserSoa.class);
 
-        userSoa = referenceConfig.get();
+
+        ReferenceConfig<UserSoa> single = new ReferenceConfig<>();
+        single.setApplication(applicationConfig);
+        single.setRegistry(registryConfig);
+        single.setInterface(UserSoa.class);
+        single.setGroup("*");
+        singleUserSoa = single.get();
+
+
+        ReferenceConfig<UserSoa> batch = new ReferenceConfig<>();
+        batch.setApplication(applicationConfig);
+        batch.setRegistry(registryConfig);
+        batch.setInterface(UserSoa.class);
+        batch.setGroup("*");
+        batch.setMerger("lpcMerger");
+        batchUserSoa = batch.get();
     }
 }
