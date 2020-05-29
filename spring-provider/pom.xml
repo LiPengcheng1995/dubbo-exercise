@@ -15,7 +15,7 @@
         <!--通用实现-->
         <dependency>
             <groupId>com.lpc.learn.dubbo</groupId>
-            <artifactId>impl</artifactId>
+            <artifactId>provider-impl</artifactId>
         </dependency>
 
         <!--SpringBoot-->

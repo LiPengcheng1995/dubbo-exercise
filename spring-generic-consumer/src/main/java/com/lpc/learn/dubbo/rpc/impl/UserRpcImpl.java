@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author: 李鹏程
@@ -24,11 +25,23 @@ public class UserRpcImpl implements UserRpc {
     @Resource
     private GenericService userSoa;
 
+    @Resource
+    private GenericService userSoaBatch;
+
+
     @Override
     public String deal(String input) {
         Map<String, Object> req = new HashMap<>();
         req.put("data", input);
         req.put("class", "com.lpc.learn.dubbo.domain.Request");
         return JSON.toJSONString(userSoa.$invoke("deal", DEAL_INPUT_TYPE, new Object[]{req}));
+    }
+
+    @Override
+    public String dealBatch(String input) {
+        Map<String, Object> req = new HashMap<>();
+        req.put("data", input);
+        req.put("class", "com.lpc.learn.dubbo.domain.Request");
+        return JSON.toJSONString(userSoaBatch.$invoke("deal", DEAL_INPUT_TYPE, new Object[]{req}));
     }
 }

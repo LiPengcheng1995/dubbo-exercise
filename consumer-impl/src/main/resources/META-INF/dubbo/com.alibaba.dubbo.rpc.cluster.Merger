@@ -1,0 +1,2 @@
+lpcMerger=com.lpc.learn.dubbo.merger.ResponseMerger
+objectMerger=com.lpc.learn.dubbo.merger.ObjectMerger

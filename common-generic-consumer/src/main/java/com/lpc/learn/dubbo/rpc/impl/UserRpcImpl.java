@@ -1,7 +1,6 @@
 package com.lpc.learn.dubbo.rpc.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.lpc.learn.dubbo.rpc.UserRpc;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.ApplicationConfig;
@@ -11,9 +10,9 @@ import org.apache.dubbo.rpc.service.GenericService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author: 李鹏程
@@ -26,7 +25,9 @@ import java.util.Map;
 @Service
 public class UserRpcImpl implements UserRpc, InitializingBean {
 
-    private GenericService genericService;
+    private GenericService singleService;
+
+    private GenericService batchService;
 
     public static final String[] DEAL_INPUT_TYPE = new String[]{"com.lpc.learn.dubbo.domain.Request"};
     @Override
@@ -34,7 +35,15 @@ public class UserRpcImpl implements UserRpc, InitializingBean {
         Map<String,Object> req = new HashMap<>();
         req.put("data",input);
         req.put("class","com.lpc.learn.dubbo.domain.Request");
-        return JSON.toJSONString(genericService.$invoke("deal", DEAL_INPUT_TYPE, new Object[]{req}));
+        return JSON.toJSONString(singleService.$invoke("deal", DEAL_INPUT_TYPE, new Object[]{req}));
+    }
+
+    @Override
+    public String dealBatch(String input) {
+        Map<String,Object> req = new HashMap<>();
+        req.put("data",input);
+        req.put("class","com.lpc.learn.dubbo.domain.Request");
+        return JSON.toJSONString(batchService.$invoke("deal", DEAL_INPUT_TYPE, new Object[]{req}));
     }
 
     @Override
@@ -47,13 +56,21 @@ public class UserRpcImpl implements UserRpc, InitializingBean {
         registryConfig.setProtocol("zookeeper");
 
 
-        ReferenceConfig<GenericService> referenceConfig = new ReferenceConfig<>();
-        referenceConfig.setApplication(applicationConfig);
-        referenceConfig.setRegistry(registryConfig);
-        referenceConfig.setInterface("com.lpc.learn.dubbo.soa.UserSoa");
-        referenceConfig.setGeneric("true");
-        referenceConfig.setGroup("*");
+        ReferenceConfig<GenericService> single = new ReferenceConfig<>();
+        single.setApplication(applicationConfig);
+        single.setRegistry(registryConfig);
+        single.setInterface("com.lpc.learn.dubbo.soa.UserSoa");
+        single.setGeneric("true");
+        single.setGroup("*");
+        singleService = single.get();
 
-        genericService = referenceConfig.get();
+        ReferenceConfig<GenericService> batch = new ReferenceConfig<>();
+        batch.setApplication(applicationConfig);
+        batch.setRegistry(registryConfig);
+        batch.setInterface("com.lpc.learn.dubbo.soa.UserSoa");
+        batch.setGeneric("true");
+        batch.setGroup("*");
+        batch.setMerger("objectMerger");
+        batchService = batch.get();
     }
 }

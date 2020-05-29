@@ -5,4 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
     <dubbo:reference id="userSoa" interface="com.lpc.learn.dubbo.soa.UserSoa" group="*" generic="true"/>
+    <dubbo:reference id="userSoaBatch" interface="com.lpc.learn.dubbo.soa.UserSoa" group="*" generic="true" merger="objectMerger"/>
+
 </beans>

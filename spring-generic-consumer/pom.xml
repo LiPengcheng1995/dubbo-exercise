@@ -13,7 +13,14 @@
 
     <dependencies>
         <!--通用实现-->
-
+        <dependency>
+            <groupId>com.lpc.learn.dubbo</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lpc.learn.dubbo</groupId>
+            <artifactId>consumer-impl</artifactId>
+        </dependency>
         <!--SpringBoot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

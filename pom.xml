@@ -14,7 +14,8 @@
         <module>spring-provider</module>
         <module>spring-consumer</module>
         <module>api</module>
-        <module>impl</module>
+        <module>provider-impl</module>
+        <module>consumer-impl</module>
         <module>common-generic-consumer</module>
         <module>spring-generic-consumer</module>
     </modules>
@@ -48,7 +49,12 @@
             </dependency>
             <dependency>
                 <groupId>com.lpc.learn.dubbo</groupId>
-                <artifactId>impl</artifactId>
+                <artifactId>provider-impl</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.dubbo</groupId>
+                <artifactId>consumer-impl</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
