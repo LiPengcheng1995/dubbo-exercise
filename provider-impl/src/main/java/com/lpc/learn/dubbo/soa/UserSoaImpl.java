@@ -14,7 +14,6 @@ import javax.annotation.Resource;
  * @Time: 21:58
  * @Description:
  */
-@Service
 public class UserSoaImpl implements UserSoa {
 
     private UserService userService;
