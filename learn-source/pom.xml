@@ -9,23 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common-provider</artifactId>
-    <dependencies>
-        <!--通用实现-->
-        <dependency>
-            <groupId>com.lpc.learn.dubbo</groupId>
-            <artifactId>api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lpc.learn.dubbo</groupId>
-            <artifactId>provider-impl</artifactId>
-        </dependency>
+    <artifactId>learn-source</artifactId>
 
-        <!--其他-->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-        </dependency>
+    <dependencies>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -38,15 +24,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-dependencies-zookeeper</artifactId>
-        </dependency>
     </dependencies>
-
 
 </project>
