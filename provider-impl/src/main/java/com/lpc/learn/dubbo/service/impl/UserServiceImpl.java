@@ -15,6 +15,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String deal(String input) {
         log.info("收到入参:{}",input);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "收到入参:" + input;
     }
 }

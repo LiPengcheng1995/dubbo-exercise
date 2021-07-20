@@ -57,6 +57,7 @@ public class UserRpcImpl implements UserRpc, InitializingBean {
         single.setRegistry(registryConfig);
         single.setInterface(UserSoa.class);
         single.setGroup("*");
+        single.setTimeout(10000);
         singleUserSoa = single.get();
 
 
